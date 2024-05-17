@@ -4,10 +4,14 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
+import os
+from dotenv import load_dotenv
 
-ALGORITHM = "HS256"
-ACCESS_TOKEN_DURATION = 1
-SECRET = "c2da719888838c06de8587a0bfc8ada4471e2ca92706484c4adaf647cf85bbc6"
+#Get cryptography from environment var
+load_dotenv()
+ALGORITHM = os.getenv('ALGORITHM')
+ACCESS_TOKEN_DURATION = os.getenv('ACCESS_TOKEN_DURATION')
+SECRET = os.getenv('SECRET')
 
 app = FastAPI()
 
